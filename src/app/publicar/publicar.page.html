@@ -14,4 +14,30 @@
 
 <ion-content>
 
+  <ion-item>
+    <ion-label position="floating">Titulo</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+
+  <!-- Textarea in an item with a floating label -->
+  <ion-item>
+    <ion-label position="floating">Descripcion</ion-label>
+    <ion-textarea></ion-textarea>
+  </ion-item>
+
+
+  <br />
+  <!-- FUNCIONALIDAD CAMARA-->
+  <div padding>
+    <ion-button expand="full" (click)="takePicture()">Tomar Foto &nbsp;
+      <ion-icon name="camera"></ion-icon>
+    </ion-button>
+  </div>
+  
+  <div padding>
+    <p>Galeria</p>
+    <img *ngIf="image" [src]="image" alt="image">
+  </div>
+    
+
 </ion-content>
