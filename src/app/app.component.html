@@ -1,11 +1,16 @@
 <ion-app>
   <ion-split-pane>
     <ion-menu>
+      
       <ion-header>
-        <ion-toolbar>
-          <ion-title>Menu</ion-title>
+        <ion-toolbar color="primary">
+          
+          <ion-title><ion-avatar>
+              <img src="https://ionicframework.com/docs/demos/api/avatar/avatar.svg">
+            </ion-avatar>User</ion-title>
         </ion-toolbar>
       </ion-header>
+      
       <ion-content>
         <ion-list>
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
@@ -18,6 +23,7 @@
           </ion-menu-toggle>
         </ion-list>
       </ion-content>
+
     </ion-menu>
     <ion-router-outlet main></ion-router-outlet>
   </ion-split-pane>
