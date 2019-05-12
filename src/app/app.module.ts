@@ -11,13 +11,21 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';   // 01.importamos la camara
 
+// imports para firebase
+import { AngularFireModule } from "angularfire2";
+import { environment } from "../environments/environment";
+import { AngularFirestoreModule } from "angularfire2/firestore";
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    // FIREBASE
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule
   ],
   providers: [
     StatusBar,
