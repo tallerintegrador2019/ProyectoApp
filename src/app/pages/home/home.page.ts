@@ -3,10 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { PublicacionI } from "../../models/publicacion.interface";
 import { PublicacionService } from "../../services/publicacion.service";
 
+
 @Component({
   selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  templateUrl: './home.page.html',
+  styleUrls: ['./home.page.scss'],
 })
 
 export class HomePage implements OnInit {
