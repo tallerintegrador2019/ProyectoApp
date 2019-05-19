@@ -16,23 +16,32 @@ import { AngularFireModule } from "angularfire2";
 import { environment } from "../environments/environment";
 import { AngularFirestoreModule } from "angularfire2/firestore";
 
+
 @NgModule({
+  
   declarations: [AppComponent],
+  
   entryComponents: [],
+  
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
+  
     // FIREBASE
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule
   ],
+  
   providers: [
     StatusBar,
     SplashScreen,
     Camera,   // 02.agregamos Camara a providers
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
+  
   bootstrap: [AppComponent]
+
 })
+
 export class AppModule {}

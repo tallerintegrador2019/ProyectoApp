@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { PublicacionI } from "../models/publicacion.interface";
-import { PublicacionService } from "../services/publicacion.service";
+import { PublicacionI } from "../../models/publicacion.interface";
+import { PublicacionService } from "../../services/publicacion.service";
 import { ActivatedRoute } from "@angular/router";
 import { NavController, LoadingController } from "@ionic/angular";
 
@@ -69,7 +69,7 @@ export class PublicacionPage implements OnInit {
     }
 
   }
-
+    // quitar publicacion
     onRemove(idPublicacion: string){
       this.publicacionService.removePublicacion(idPublicacion)
     }
