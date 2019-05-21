@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { PublicacionI } from "../models/publicacion.interface";
-import { PublicacionService } from "../services/publicacion.service";
+import { PublicacionI } from "../../models/publicacion.interface";
+import { PublicacionService } from "../../services/publicacion.service";
 
 @Component({
   selector: 'app-home',
