@@ -8,9 +8,5 @@ export const environment = {
     storageBucket: "crudfirebase-f654a.appspot.com",
     messagingSenderId: "52526050316",
     appId: "1:52526050316:web:acd6b65daa0c59d8"
-<<<<<<< HEAD
-    
-=======
->>>>>>> 6a8c4f2582ef9c37dfa6b1b9401f7b3f6db86acf
-  }
+    }
 };
