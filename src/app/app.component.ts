@@ -24,6 +24,11 @@ export class AppComponent {
       title: 'Publicar Articulo',
       url: '/publicar',
       icon: 'add-circle-outline'
+    },
+    {
+      title: 'Registrarse',
+      url: '/registrarse',
+      icon: 'add-circle-outline'
     }
   ];
 
