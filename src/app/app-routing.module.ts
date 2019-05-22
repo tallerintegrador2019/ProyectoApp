@@ -7,8 +7,8 @@ const routes: Routes = [
   { path: 'list', loadChildren: './components/list/list.module#ListPageModule' },
   { path: 'publicar', loadChildren: './pages/publicar/publicar.module#PublicarPageModule' },
   { path: 'publicacion/:id', loadChildren: './pages/publicacion/publicacion.module#PublicacionPageModule' },
-  { path: 'publicacion', loadChildren: './pages/publicacion/publicacion.module#PublicacionPageModule' }
-  
+  { path: 'publicacion', loadChildren: './pages/publicacion/publicacion.module#PublicacionPageModule' },
+  { path: 'registrarse', loadChildren: './pages/registrarse/registrarse.module#RegistrarsePageModule' }
 
 ];
 
