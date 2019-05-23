@@ -24,6 +24,11 @@ export class AppComponent {
       title: 'Publicar Articulo',
       url: '/publicar',
       icon: 'add-circle-outline'
+    },
+    {
+      title: 'Buscar Articulo',
+      url: '/buscador',
+      icon: 'add-circle-outline'
     }
   ];
 
