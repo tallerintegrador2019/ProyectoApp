@@ -28,6 +28,11 @@ export class AppComponent {
     {
       title: 'Buscar Articulo',
       url: '/buscador',
+      icon: 'add-circle-outline'     
+    },
+    {
+      title: 'Registrarse',
+      url: '/registrarse',
       icon: 'add-circle-outline'
     }
   ];
