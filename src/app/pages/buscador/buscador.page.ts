@@ -1,36 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-
-import { PublicacionI } from "../../models/publicacion.interface";
-import { PublicacionService } from "../../services/publicacion.service";
+import { AngularFirestore } from 'angularfire2/firestore';
+import { PublicacionService } from 'src/app/services/publicacion.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  selector: 'app-buscador',
+  templateUrl: './buscador.page.html',
+  styleUrls: ['./buscador.page.scss'],
 })
-
-export class HomePage implements OnInit {
-
-  publicaciones: PublicacionI[];
+export class BuscadorPage implements OnInit {
   public goalList :any [];
   public loadedGoalList : any [];
+  constructor( private firestore : AngularFirestore, private publicacionesService: PublicacionService) { }
 
-  constructor(private publicacionesService: PublicacionService) {
-  }
-
-  ngOnInit(){
-    this.publicacionesService.getPublicaciones().subscribe(res => this.publicaciones = res);
+  ngOnInit() {
     this.publicacionesService.getPublicaciones().subscribe(goalList => {
       this.goalList = goalList;
       this.loadedGoalList = goalList;
     })
   }
+
   initializeItems() : void {
     this.goalList = this.loadedGoalList;
   }
 
   filterList(evt: any){
-    console.log(evt);
     this.initializeItems();
     const searchTerm = evt.srcElement.value;
     if (!searchTerm){
