@@ -15,8 +15,13 @@ export class PublicacionService {
   private publicacionesCollection: AngularFirestoreCollection<PublicacionI>;
   private publicaciones: Observable<PublicacionI[]>;
 
-  constructor(db: AngularFirestore) {
-    this.publicacionesCollection = db.collection<PublicacionI>('publicaciones');
+  constructor(public db: AngularFirestore) {  
+  }
+
+   // TRAER TODAS LAS PUBLICACIONES
+   getPublicaciones(){
+
+    this.publicacionesCollection = this.db.collection<PublicacionI>('publicaciones');
     this.publicaciones = this.publicacionesCollection.snapshotChanges().pipe(map(
       actions => {
         return actions.map(a => {
@@ -26,10 +31,7 @@ export class PublicacionService {
         });
       }
     ));
-   }
 
-   // TRAER TODAS LAS PUBLICACIONES
-   getPublicaciones(){
      return this.publicaciones;
    }
 
