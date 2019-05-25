@@ -16,19 +16,19 @@ export class AppComponent {
       icon: 'home'
     },
     {
-      title: 'Publicar Transformacion',
+      title: 'Publicar transformacion',
       url: '/tabs/publicacion',
       icon: 'add-circle-outline'
     },
     {
       title: 'Buscar Articulo',
       url: '/buscador',
-      icon: 'add-circle-outline'     
+      icon: 'search'     
     },
     {
       title: 'Registrarse',
       url: '/registrarse',
-      icon: 'add-circle-outline'
+      icon: 'key'
     }
   ];
 
