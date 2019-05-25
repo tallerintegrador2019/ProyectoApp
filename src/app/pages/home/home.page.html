@@ -1,14 +1,10 @@
-<ion-header>
-  <ion-toolbar color="primary">
 
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
+<ion-header>
+    <ion-toolbar color="primary">
   
-    <ion-title lines="inset">
-      <ion-icon name="leaf"></ion-icon>
-      todavía<strong>sirve</strong>
-    </ion-title>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
     
 
   </ion-toolbar>
@@ -54,3 +50,44 @@
 
   </ion-fab>  
 </ion-content>
+      <ion-title lines="inset">
+        <ion-icon name="leaf"></ion-icon>
+        todavía<strong>sirve</strong>
+      </ion-title>
+      
+  
+    </ion-toolbar>
+  </ion-header>
+  
+  
+  
+  <ion-content padding>
+    <ion-list>
+      <ion-item-sliding *ngFor="let publicacion of publicaciones">
+      <ion-item lines="inset" button [routerLink]="['/publicacion',publicacion.id]">
+        <ion-label>
+          {{publicacion.nombre}}
+        </ion-label>
+      </ion-item>
+  
+      <ion-item-options side="end">
+        <ion-item-option (click)="onRemove(item)" color="secondary">
+          <ion-icon name="checkmark" slot="end"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+  
+      </ion-item-sliding>
+    </ion-list>
+  
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button routerLink="/publicacion" routerDirection="forward" color="success">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+  
+    </ion-fab>
+  
+   
+  
+  
+    
+  </ion-content>
