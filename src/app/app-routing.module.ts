@@ -9,7 +9,9 @@ const routes: Routes = [
   { path: 'publicacion/:id', loadChildren: './pages/publicacion/publicacion.module#PublicacionPageModule' },
   { path: 'publicacion', loadChildren: './pages/publicacion/publicacion.module#PublicacionPageModule' },
   { path: 'buscador', loadChildren: './pages/buscador/buscador.module#BuscadorPageModule' },
-  { path: 'registrarse', loadChildren: './pages/registrarse/registrarse.module#RegistrarsePageModule' }
+  { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule' },
+  { path: 'registrar', loadChildren: './pages/registrar/registrar.module#RegistrarPageModule' }
+
 
 
 ];
