@@ -9,12 +9,9 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content padding>
-
   <!-- barra de busqueda -->
   <ion-searchbar showcancelbutton="" (ionInput)="filterList($event)"></ion-searchbar>
-
   <!-- listado de publicaciones -->
   <ion-item>
     <ion-label>
@@ -33,7 +30,6 @@
           <p>{{publicacion.descripcion}}</p>
         </ion-label>
       </ion-item>
-
     </ion-item-sliding>
   </ion-list>
 

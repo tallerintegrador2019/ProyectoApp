@@ -26,6 +26,11 @@ export class AppComponent {
       icon: 'search'     
     },
     {
+      title: 'Login',
+      url: '/login',
+      icon: 'add-circle-outline'     
+    },
+    {
       title: 'Registrarse',
       url: '/registrarse',
       icon: 'key'
