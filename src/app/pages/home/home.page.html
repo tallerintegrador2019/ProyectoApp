@@ -5,25 +5,29 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title lines="inset">
-      <ion-icon name="leaf"></ion-icon>
       todavía<strong>sirve</strong>
     </ion-title>
   </ion-toolbar>
 </ion-header>
-
-
-
 <ion-content padding>
-
   <!-- barra de busqueda -->
   <ion-searchbar showcancelbutton="" (ionInput)="filterList($event)"></ion-searchbar>
-
   <!-- listado de publicaciones -->
+  <ion-item>
+    <ion-label>
+      Publicaciones recientes
+    </ion-label>
+  </ion-item>
   <ion-list>
     <ion-item-sliding *ngFor="let publicacion of goalList">
+
       <ion-item lines="inset" button [routerLink]="['/publicacion',publicacion.id]">
+        <ion-thumbnail slot="start">
+          <img src="http://lorempixel.com/200/200/cats">
+        </ion-thumbnail>
         <ion-label>
           {{publicacion.nombre}}
+          <p>{{publicacion.descripcion}}</p>
         </ion-label>
       </ion-item>
     </ion-item-sliding>
@@ -31,7 +35,7 @@
 
   <!-- boton flotante para agregar publicacion -->
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button routerLink="/publicacion" routerDirection="forward" color="success">
+    <ion-fab-button routerLink="/publicacion" routerDirection="forward" color="primary">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
