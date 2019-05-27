@@ -31,8 +31,8 @@ export class AppComponent {
       icon: 'add-circle-outline'     
     },
     {
-      title: 'Registrarse',
-      url: '/registrarse',
+      title: 'Registrar',
+      url: '/registrar',
       icon: 'key'
     }
   ];
