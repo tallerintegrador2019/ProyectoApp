@@ -13,13 +13,18 @@
 <ion-content>
     <ion-searchbar showcancelbutton="" (ionInput)="filterList($event)"></ion-searchbar>
     <ion-list>
-        <ion-item-sliding *ngFor="let publicacion of goalList">
-        <ion-item>
-         <ion-label>
-           {{ publicacion.nombre }}
+      <ion-item-sliding *ngFor="let publicacion of goalList">
+  
+        <ion-item lines="inset" button [routerLink]="['/publicacion',publicacion.id]">
+          <ion-thumbnail slot="start">
+            <img src="http://lorempixel.com/200/200/cats">
+          </ion-thumbnail>
+          <ion-label>
+            {{publicacion.nombre}}
+            <p>{{publicacion.descripcion}}</p>
           </ion-label>
-        </ion-item> 
-        </ion-item-sliding>
+        </ion-item>
+      </ion-item-sliding>
     </ion-list>
    <!-- Cambiar la logica para que cargue los resultados recien al teclear -->
 </ion-content>
