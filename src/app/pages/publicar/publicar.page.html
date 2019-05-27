@@ -1,16 +1,11 @@
 <ion-header>
-
   <ion-toolbar color="primary">
-    
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-back-button defaultHref="/tabs/home"></ion-back-button>
     </ion-buttons>
-
     <ion-title>Publicar Articulo</ion-title>
   </ion-toolbar>
-
 </ion-header>
-
 
 <ion-content>
 
@@ -33,11 +28,11 @@
       <ion-icon name="camera"></ion-icon>
     </ion-button>
   </div>
-  
+
   <div padding>
     <p>Galeria</p>
     <img *ngIf="image" [src]="image" alt="image">
   </div>
-    
+
 
 </ion-content>
