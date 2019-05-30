@@ -3,6 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { PublicacionI } from "../../models/publicacion.interface";
 import { PublicacionService } from "../../services/publicacion.service";
 
+import { AngularFireStorage } from "angularfire2/storage";
+import { Observable } from "rxjs";
+import { finalize } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-home',
@@ -16,7 +20,12 @@ export class HomePage implements OnInit {
   public goalList :any [];
   public loadedGoalList : any [];
 
-  constructor(private publicacionesService: PublicacionService) {
+  // propiedades de storage
+  uploadPercent: Observable<number>;
+  downloadURL: Observable<string>;
+  image: string = null;
+
+  constructor(private publicacionesService: PublicacionService, private storage: AngularFireStorage) {
   }
 
   ngOnInit(){
@@ -26,6 +35,7 @@ export class HomePage implements OnInit {
       this.loadedGoalList = goalList;
     })
   }
+
   initializeItems() : void {
     this.goalList = this.loadedGoalList;
   }
@@ -47,5 +57,28 @@ export class HomePage implements OnInit {
       }
     });
   }
+
+  // metodos de storage
+  subirArchivo(event) {
+    const file = event.target.files[0];
+    const path = "images/demo126";
+    const task = this.storage.upload(path, file);
+    const ref = this.storage.ref(path);
+
+    // observar porcentaje cambiados
+    this.uploadPercent = task.percentageChanges();
+    console.log('Image uploaded!');
+    task.snapshotChanges().pipe(
+      finalize(() => {
+        this.downloadURL = ref.getDownloadURL()
+        this.downloadURL.subscribe(url => (this.image = url));
+      })
+    ).subscribe();
+
+  }
+
+
+
+
 
 }

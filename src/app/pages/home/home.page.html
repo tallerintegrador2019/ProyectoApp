@@ -9,9 +9,24 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
+
 <ion-content padding>
+
+  <input type="file" (change)="subirArchivo($event)">
+  <div>{{ uploadPercent | async }}</div>
+  <!-- <a [href]="downloadURL | async">{{ downloadURL | async }}</a> -->
+
+   <ion-card>
+    <ion-card-header>
+      <img [src]="downloadURL | async" alt="" srcset="">
+      <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+      <ion-card-title>Card Title</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
   <!-- barra de busqueda -->
   <ion-searchbar showcancelbutton="" (ionInput)="filterList($event)"></ion-searchbar>
+
   <!-- listado de publicaciones -->
   <ion-item>
     <ion-label>
@@ -39,5 +54,5 @@
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-  
+
 </ion-content>
