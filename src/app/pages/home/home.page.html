@@ -12,18 +12,6 @@
 
 <ion-content padding>
 
-  <input type="file" (change)="subirArchivo($event)">
-  <div>{{ uploadPercent | async }}</div>
-  <!-- <a [href]="downloadURL | async">{{ downloadURL | async }}</a> -->
-
-   <ion-card>
-    <ion-card-header>
-      <img [src]="downloadURL | async" alt="" srcset="">
-      <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-      <ion-card-title>Card Title</ion-card-title>
-    </ion-card-header>
-  </ion-card>
-
   <!-- barra de busqueda -->
   <ion-searchbar showcancelbutton="" (ionInput)="filterList($event)"></ion-searchbar>
 
@@ -38,7 +26,7 @@
 
       <ion-item lines="inset" button [routerLink]="['/publicacion',publicacion.id]">
         <ion-thumbnail slot="start">
-          <img src="http://lorempixel.com/200/200/cats">
+          <img src="{{publicacion.imagen}}">
         </ion-thumbnail>
         <ion-label>
           {{publicacion.nombre}}
