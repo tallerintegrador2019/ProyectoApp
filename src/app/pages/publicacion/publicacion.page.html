@@ -18,20 +18,23 @@
     <ion-item *ngIf="publicacion">
       <ion-input required type="text" placeholder="descripcion" [(ngModel)]="publicacion.descripcion"></ion-input>
     </ion-item>
+    <br/>
+    <ion-item>
+      <ion-input type="file" (change)="subirArchivo($event)"></ion-input>
+      <div>{{ uploadPercent | async }}</div>
+      <!-- <a [href]="downloadURL | async">{{ downloadURL | async }}</a> -->
+    </ion-item>
 
-    <input type="file" (change)="subirArchivo($event)">
-    <div>{{ uploadPercent | async }}</div>
-    <!-- <a [href]="downloadURL | async">{{ downloadURL | async }}</a> -->
+    <img [src]="downloadURL | async" alt="" srcset="">
 
-    <ion-card>
+<!--     <ion-card *ngIf="!!src">
       <ion-card-header>
         <img [src]="downloadURL | async" alt="" srcset="">
-        <ion-card-subtitle>{{ downloadURL | async }}</ion-card-subtitle>
       </ion-card-header>
-    </ion-card>
+    </ion-card> -->
 
     <ion-item *ngIf="publicacion">
-      <ion-input required type="text" placeholder="imagen" [(ngModel)]="publicacion.imagen" value="{{ downloadURL | async }}"></ion-input>
+      <ion-input required type="hidden" placeholder="imagen" [(ngModel)]="publicacion.imagen" value="{{ downloadURL | async }}"></ion-input>
     </ion-item>
 
   </ion-list>
