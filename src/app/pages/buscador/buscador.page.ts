@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { AlertController, NavController } from '@ionic/angular';
 import { AngularFirestore } from 'angularfire2/firestore';
+import { Observable } from 'rxjs';
 import { PublicacionService } from 'src/app/services/publicacion.service';
+import { YoutubeService } from 'src/app/services/youtube.service';
+import { async } from '@angular/core/testing';
 
 @Component({
   selector: 'app-buscador',
@@ -10,7 +14,10 @@ import { PublicacionService } from 'src/app/services/publicacion.service';
 export class BuscadorPage implements OnInit {
   public goalList :any [];
   public loadedGoalList : any [];
-  constructor( private firestore : AngularFirestore, private publicacionesService: PublicacionService) { }
+  channelId = 'UC1z8Q3KYrPz8kbd3JYPsNuQ';
+  playlists : Observable<any[]>;
+  constructor(public navCtrl: NavController , private firestore : AngularFirestore, private publicacionesService: PublicacionService,
+     private youtubeService : YoutubeService, private alertCrtl : AlertController) { }
 
   ngOnInit() {
     this.publicacionesService.getPublicaciones().subscribe(goalList => {
@@ -39,5 +46,24 @@ export class BuscadorPage implements OnInit {
       }
     });
   }
+  //  searchPlayList(){
+  //   this.playlists = this.youtubeService.getPlaylistsForChannel(this.channelId);
+  //   this.playlists.subscribe(data => {console.log('data :', data)} ,
+  //                           async err => { let alert = await this.alertCrtl.create({
+  //                                                   header : 'Error',
+  //                                                   subHeader : 'en Playlist',
+  //                                                   message : 'No Playlist found',
+  //                                                   buttons : ['OK']
+  //                                                 }); 
+  //                                         alert.present();
+  //                                        });
+  // }
 
+  // openPlayList(id){
+  //   this.navCtrl.navigateBack('PlayListPage/',id);
+  // }
+  // openPlayList(id){
+  //   this.navCtrl.
+  //   //(PlaylistPage,{id : id} );
+  // }
 }
