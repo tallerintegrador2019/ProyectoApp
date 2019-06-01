@@ -46,7 +46,7 @@ export class PublicacionPage implements OnInit {
   }
 
 
-  // metodos de storage
+  // metodos de subida de imagen a storage
   subirArchivo(event) {
     const file = event.target.files[0];
     const path = "publicaciones/img"+Math.random();
@@ -65,7 +65,7 @@ export class PublicacionPage implements OnInit {
     ).subscribe();
   }
 
-
+  // metodo cargar publicacion
   async loadPublicacion() {
     const loading = await this.loadingController.create({
       message: 'Cargando.....'
@@ -78,29 +78,31 @@ export class PublicacionPage implements OnInit {
     });
   }
 
+  // metodo guardar publicacion
   async savePublicacion() {
     const loading = await this.loadingController.create({
-      message: "Guardando....."
+      message: "Guardando..."
     })
+
     await loading.present();
 
     if (this.publicacionId) {
-      // Actualizar
+      // si existe lo actualiza
       this.publicacionService.updatePublicacion(this.publicacion, this.publicacionId).then(() => {
         loading.dismiss();
         this.nav.navigateForward("/");
       });
 
     } else {
-      // Agregar nuevo
+      // si no existe lo agrega como nuevo
       this.publicacionService.addPublicacion(this.publicacion).then(() => {
         loading.dismiss();
         this.nav.navigateForward("/");
       });
     }
-
   }
-  // quitar publicacion
+
+  // metodo para eliminar publicacion
   onRemove(idPublicacion: string) {
     this.publicacionService.removePublicacion(idPublicacion)
   }
