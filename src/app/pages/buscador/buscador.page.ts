@@ -73,5 +73,6 @@ export class BuscadorPage implements OnInit {
   watch(watch){
     console.log('entre');
     this.youtube.openVideo(watch);
+    window.open('https://www.youtube.com/watch?v='+ watch);
   }
 }
