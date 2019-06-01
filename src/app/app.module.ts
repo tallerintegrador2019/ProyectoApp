@@ -12,7 +12,8 @@ import { AppRoutingModule } from './app-routing.module';
 
 // imports para Youtube
 import { HttpModule} from '@angular/http';
-import {YoutubeVideoPlayer, YoutubeVideoPlayerOriginal} from '@ionic-native/youtube-video-player';
+//import {YoutubeVideoPlayer} from '@ionic-native/youtube-video-player';
+import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player/ngx';
 import {YoutubeService } from "./services/youtube.service";
 
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';   // 01.importamos la camara
@@ -49,7 +50,7 @@ import { AngularFireStorageModule } from "angularfire2/storage";
     StatusBar,
     SplashScreen,
     YoutubeService,
-   // YoutubeVideoPlayer,
+    YoutubeVideoPlayer,
     Camera,   // 02.agregamos Camara a providers
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],

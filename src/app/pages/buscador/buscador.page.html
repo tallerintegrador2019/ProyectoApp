@@ -11,9 +11,12 @@
 </ion-header>
 
 <ion-content>
-  <ion-label stacked> Chanel Id</ion-label>
-  <ion-input type="text" [(ngModel)]="chanelId"></ion-input>
+  <!-- <ion-label stacked> Chanel Id</ion-label>
+  <ion-input type="text" [(ngModel)]="chanelId"></ion-input> -->
     <ion-searchbar showcancelbutton="" (ionInput)="filterList($event)"></ion-searchbar>
+    <ion-fab-button round block (click)="watch('rPVvwj8uGnk')">
+      <ion-icon name="play"></ion-icon>
+    </ion-fab-button>
     <ion-list>
       <ion-item-sliding *ngFor="let publicacion of goalList">
   

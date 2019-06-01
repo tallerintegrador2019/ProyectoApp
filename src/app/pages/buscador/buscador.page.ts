@@ -3,6 +3,8 @@ import { AlertController, NavController } from '@ionic/angular';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
 import { PublicacionService } from 'src/app/services/publicacion.service';
+//import {YoutubeVideoPlayer} from '@ionic-native/youtube-video-player';
+import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player/ngx';
 import { YoutubeService } from 'src/app/services/youtube.service';
 import { async } from '@angular/core/testing';
 
@@ -17,7 +19,8 @@ export class BuscadorPage implements OnInit {
   channelId = 'UC1z8Q3KYrPz8kbd3JYPsNuQ';
   playlists : Observable<any[]>;
   constructor(public navCtrl: NavController , private firestore : AngularFirestore, private publicacionesService: PublicacionService,
-     private youtubeService : YoutubeService, private alertCrtl : AlertController) { }
+     private youtubeService : YoutubeService, private alertCrtl : AlertController,
+     private youtube: YoutubeVideoPlayer) { }
 
   ngOnInit() {
     this.publicacionesService.getPublicaciones().subscribe(goalList => {
@@ -66,4 +69,9 @@ export class BuscadorPage implements OnInit {
   //   this.navCtrl.
   //   //(PlaylistPage,{id : id} );
   // }
+
+  watch(watch){
+    console.log('entre');
+    this.youtube.openVideo(watch);
+  }
 }
