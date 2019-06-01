@@ -4,7 +4,9 @@ import { PublicacionI } from "../../models/publicacion.interface";
 import { PublicacionService } from "../../services/publicacion.service";
 import { ActivatedRoute } from "@angular/router";
 import { NavController, LoadingController } from "@ionic/angular";
-
+import { AngularFireStorage } from "angularfire2/storage";
+import { Observable } from "rxjs";
+import { finalize } from 'rxjs/operators';
 @Component({
   selector: 'app-publicacion',
   templateUrl: './publicacion.page.html',
@@ -13,7 +15,8 @@ import { NavController, LoadingController } from "@ionic/angular";
 
 export class PublicacionPage implements OnInit {
 
-  publicacion: PublicacionI= {
+
+  publicacion: PublicacionI = {
     nombre: "",
     descripcion: "",
     imagen: "",
@@ -21,21 +24,48 @@ export class PublicacionPage implements OnInit {
 
   publicacionId: null;
 
+  // propiedades de storage
+  uploadPercent: Observable<number>;
+  downloadURL: Observable<string>;
+  image: string = null;
+
   constructor(
-    private route: ActivatedRoute, 
+    private route: ActivatedRoute,
     private nav: NavController,
     private publicacionService: PublicacionService,
-    private loadingController: LoadingController
-    ){ }
+    private loadingController: LoadingController,
+    private storage: AngularFireStorage
+  ) { }
 
   ngOnInit() {
     this.publicacionId = this.route.snapshot.params['id'];
-    if(this.publicacionId){
+    if (this.publicacionId) {
       this.loadPublicacion();
     }
   }
 
-  async loadPublicacion(){
+
+  // metodos de subida de imagen a storage
+  subirArchivo(event) {
+    const file = event.target.files[0];
+    const path = "publicaciones/img"+Math.random();
+    const task = this.storage.upload(path, file);
+    const ref = this.storage.ref(path);
+
+    // observar porcentaje cambiados
+    this.uploadPercent = task.percentageChanges();
+    console.log('Imagen subida!');
+
+    task.snapshotChanges().pipe(
+      finalize(() => {
+        this.downloadURL = ref.getDownloadURL()
+        this.downloadURL.subscribe(url => (this.image = url));
+      })
+    ).subscribe();
+  }
+
+  // metodo cargar publicacion
+  async loadPublicacion() {
     const loading = await this.loadingController.create({
       message: 'Cargando.....'
     });
@@ -46,35 +76,37 @@ export class PublicacionPage implements OnInit {
       this.publicacion = res;
     });
   }
-
-  async savePublicacion(){
+  // metodo guardar publicacion
+  async savePublicacion() {
     const loading = await this.loadingController.create({
-      message: "Guardando....."
+      message: "Guardando..."
     })
+
     await loading.present();
 
-    if(this.publicacionId){
-      // Actualizar
-      this.publicacionService.updatePublicacion(this.publicacion, this.publicacionId).then(() =>{
+    if (this.publicacionId) {
+      // si existe lo actualiza
+      this.publicacionService.updatePublicacion(this.publicacion, this.publicacionId).then(() => {
         loading.dismiss();
         this.nav.navigateForward("/");
       });
-  
+
     } else {
-      // Agregar nuevo
-        this.publicacionService.addPublicacion(this.publicacion).then(() =>{
+      // si no existe lo agrega como nuevo
+      this.publicacionService.addPublicacion(this.publicacion).then(() => {
         loading.dismiss();
         this.nav.navigateForward("/");
       });
     }
-
   }
-    // quitar publicacion
-    onRemove(idPublicacion: string){
-      this.publicacionService.removePublicacion(idPublicacion)
-    }
 
-
+  // metodo para eliminar publicacion
+  onRemove(idPublicacion: string) {
+    this.publicacionService.removePublicacion(idPublicacion)
   }
+
+
+}
+
 
 
