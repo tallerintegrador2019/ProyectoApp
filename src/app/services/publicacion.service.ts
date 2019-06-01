@@ -20,7 +20,6 @@ export class PublicacionService {
 
    // TRAER TODAS LAS PUBLICACIONES
    getPublicaciones(){
-
     this.publicacionesCollection = this.db.collection<PublicacionI>('publicaciones');
     this.publicaciones = this.publicacionesCollection.snapshotChanges().pipe(map(
       actions => {

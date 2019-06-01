@@ -10,6 +10,11 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
+// imports para Youtube
+import { HttpModule} from '@angular/http';
+import {YoutubeVideoPlayer, YoutubeVideoPlayerOriginal} from '@ionic-native/youtube-video-player';
+import {YoutubeService } from "./services/youtube.service";
+
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';   // 01.importamos la camara
 
 // imports para firebase
@@ -18,28 +23,33 @@ import { environment } from "../environments/environment";
 import { AngularFirestoreModule } from "angularfire2/firestore";
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
+import { AngularFireStorageModule } from "angularfire2/storage";
+
 
 @NgModule({
-  
+  // aca dentro va la pagina de la playlist PlayListPage
   declarations: [AppComponent],
   
   entryComponents: [],
   
   imports: [
+    HttpModule,
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     FormsModule,
-  
     // FIREBASE
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFireStorageModule
   ],
   
   providers: [
     StatusBar,
     SplashScreen,
+    YoutubeService,
+   // YoutubeVideoPlayer,
     Camera,   // 02.agregamos Camara a providers
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
