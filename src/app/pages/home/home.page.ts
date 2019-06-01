@@ -26,6 +26,7 @@ export class HomePage implements OnInit {
       this.loadedGoalList = goalList;
     })
   }
+
   initializeItems() : void {
     this.goalList = this.loadedGoalList;
   }
@@ -47,5 +48,9 @@ export class HomePage implements OnInit {
       }
     });
   }
+
+
+
+
 
 }

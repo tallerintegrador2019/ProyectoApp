@@ -9,9 +9,12 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
+
 <ion-content padding>
+
   <!-- barra de busqueda -->
   <ion-searchbar showcancelbutton="" (ionInput)="filterList($event)"></ion-searchbar>
+
   <!-- listado de publicaciones -->
   <ion-item>
     <ion-label>
@@ -23,7 +26,7 @@
 
       <ion-item lines="inset" button [routerLink]="['/publicacion',publicacion.id]">
         <ion-thumbnail slot="start">
-          <img src="http://lorempixel.com/200/200/cats">
+          <img src="{{publicacion.imagen}}">
         </ion-thumbnail>
         <ion-label>
           {{publicacion.nombre}}
@@ -39,5 +42,5 @@
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-  
+
 </ion-content>
